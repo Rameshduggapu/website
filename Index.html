@@ -8,7 +8,6 @@
 
 :root {
     --primary-bg: linear-gradient(135deg, #ff758c, #ff7eb3);
-    --overlay-dark: rgba(0,0,0,0.45);
 }
 
 * {
@@ -79,18 +78,23 @@ body {
         rgba(0,0,0,0.25)
     );
     display: flex;
-    align-items: flex-end;
+    flex-direction: column;       /* Stack text lines */
+    align-items: center;          /* Center horizontally */
+    justify-content: center;      /* Center vertically */
+    text-align: center;
     padding: 30px;
 }
 
 .overlay p {
     color: #fff;
-    font-size: 1.4rem;
+    font-size: 1.8rem;
     line-height: 1.5;
+    font-weight: 600;
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
     animation: fadeUp 1.2s ease forwards;
-    text-align: center;
 }
 
+/* Fade animation */
 @keyframes fadeUp {
     from {
         opacity: 0;
@@ -140,7 +144,7 @@ header span {
 
 <!-- Scripts -->
 <script>
-// Falling hearts
+// Falling hearts animation
 function createHeart() {
     const heart = document.createElement("div");
     heart.classList.add("heart");
@@ -153,7 +157,7 @@ function createHeart() {
 }
 setInterval(createHeart, 300);
 
-// Image upload with Option B text
+// Image upload with Option B romantic text
 const uploadInput = document.getElementById("imageUpload");
 const gallery = document.getElementById("gallery");
 
@@ -175,6 +179,7 @@ uploadInput.addEventListener("change", function () {
             const card = document.createElement("div");
             card.className = "card";
 
+            // Pick a random romantic text
             const randomText = loveTexts[Math.floor(Math.random() * loveTexts.length)];
 
             card.innerHTML = `
